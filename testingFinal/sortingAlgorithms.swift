@@ -74,6 +74,81 @@ class SortingAlgorithms {
         return merge(arr1: arr1, arr2: arr2)
     }
     
+    func insertionSort(_ data: [Int]) -> [Int]{
+        var randomArray = data
+        for i in 1..<randomArray.count {
+          let num = randomArray[i]
+          // j is numbers before 'num'
+          var j = i - 1
+          while j >= 0 && randomArray[j] > num {
+            // swap round
+            randomArray[j + 1] = randomArray[j]
+            // decrement to move back in array
+            j = j - 1
+          }
+          // put num in correct place
+          randomArray[j + 1] = num
+        }
+        
+        return randomArray
+    }
     
+    func quickSort(_ array: [Int]) -> [Int] {
+
+      var lowerVal = [Int]()
+      var equalVal = [Int]()
+      var higherVal = [Int]()
+
+      if array.count > 1 {
+        let count = array.count
+
+        let pivotValue  = (array[0] + array[count / 2] +  array[count - 1]) / 3
+
+
+        for i in array {
+          if i < pivotValue {
+            lowerVal.append(i)
+
+          }
+          else if i == pivotValue {
+            equalVal.append(i)
+          }
+
+          else if i > pivotValue {
+            higherVal.append(i)
+          }
+        }
+        return quickSort(lowerVal) + equalVal+quickSort(higherVal)
+                                                
+      }
+      else {
+         return array
+      }
+
+    }
+    
+    func linearSearch(data: [Int], elementToFind: Int) -> String {
+
+        for i in 0 ... data.count-1 {
+            print(data[i])
+            if data[i] == elementToFind {
+                return "Y"
+            }
+        }
+        
+        return "N"
+    }
+    
+    func binarySearch(data: [Int], elementToFind: Int) -> String {
+        //make function recursive
+        var makeArray = []
+        if elementToFind < data[data.count/2] {
+            for i in 0..<data[data.count/2]-1 {
+                makeArray.append(data[i])
+            }
+        }
+
+
+    }
 
 }
